@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//SoftQuad Software//DTD HoTMetaL PRO 6.0::19990601::extensions to HTML 4.0//EN" "hmpro6.dtd">
+<HTML> 
+  <HEAD>
+	 <META NAME="KEYWORDS"
+	  CONTENT="infinite , instant , unlimited , crossword , cross, word, generator , puzzle , script , crosswords, printable">
+	 <META NAME="DESCRIPTION"
+	  CONTENT="Infinite Crossword Puzzle Generator Script to create Crosswords for prining or saving for use in your web browser">
+	 
+	 <TITLE>Infinite Crossword Puzzle Generator by Emogic.com</TITLE> 
+  </HEAD> 
+  <BODY BACKGROUND="crossword.gif"> 
+	 <CENTER> 
+		<TABLE CELLPADDING="0" CELLSPACING="0" BGCOLOR="#FFFFFF"> 
+		  <TR> 
+			 <TD></TD> 
+		  </TR> 
+		</TABLE> 
+		<TABLE CELLPADDING="0" CELLSPACING="1" BGCOLOR="#000000"> 
+		  <TR> 
+			 <TD> 
+				<TABLE CELLPADDING="5" CELLSPACING="0" BGCOLOR="#FFFFFF"> 
+				  <TR> 
+					 <TD> 
+						<H3>Emogic's Infinite Crossword Generator</H3> 
+						<CENTER> 
+						  <FORM ACTION="/cgi/crossword/crossword.cgi" METHOD="POST"
+						  NAME="MyForm"> 
+							 <P>Size (size x size)
+								<INPUT TYPE="TEXT" NAME="width" VALUE="15" SIZE="2"> (9 - 51)</P> 
+							 <P>Generate puzzle for
+								<INPUT TYPE="TEXT" NAME="timeout" VALUE="5" SIZE="2"> seconds. (1 - 30)</P> 
+							 <TABLE CELLPADDING="0" CELLSPACING="0"> 
+								<TR> 
+								  <TD VALIGN="TOP" COLSPAN="2" ALIGN="CENTER"><U>Clue
+									 Databases</U></TD> 
+								</TR> 
+								<TR> 
+								  <TD VALIGN="TOP"><INPUT TYPE="CHECKBOX"
+									 NAME="cluefiles" CHECKED="CHECKED" VALUE="words/CrosswordExpress.txt">
+									 Standard<BR><INPUT TYPE="CHECKBOX" NAME="cluefiles"
+									 VALUE="words/CrosswordExpressExtra.txt"> Extra<BR><INPUT TYPE="CHECKBOX"
+									 NAME="cluefiles" VALUE="words/SympathyClueMaintainer.txt"> Extra2<BR><INPUT
+									 TYPE="CHECKBOX" NAME="cluefiles" VALUE="words/CSolver.txt"> Extra3<BR><INPUT
+									 TYPE="CHECKBOX" NAME="cluefiles" VALUE="words/American.txt">
+									 USA/Slang/Acro<BR></TD> 
+								  <TD VALIGN="TOP"><INPUT TYPE="CHECKBOX"
+									 NAME="cluefiles" VALUE="words/WordNetNouns.txt"> WordNet Nouns<BR><INPUT
+									 TYPE="CHECKBOX" NAME="cluefiles" VALUE="words/WordNetVerbs.txt"> WordNet
+									 Verbs<BR><INPUT TYPE="CHECKBOX" NAME="cluefiles" VALUE="words/WordNetAdj.txt">
+									 WordNet Adj<BR><INPUT TYPE="CHECKBOX" NAME="cluefiles"
+									 VALUE="words/WordNetAdv.txt"> WordNet Adv<BR><INPUT TYPE="CHECKBOX"
+									 NAME="cluefiles" VALUE="words/WordNetAntonyms.txt"> WordNet Antonyms</TD> 
+								</TR> 
+							 </TABLE> 
+							 <P>Minimum word size:
+								<INPUT TYPE="TEXT" NAME="min" SIZE="3" VALUE="3"> (2-51)</P> 
+							 <P>Maximum word size:
+								<INPUT TYPE="TEXT" NAME="max" SIZE="3" VALUE="51"> (2-51)</P> 
+							 <P><INPUT TYPE="SUBMIT" NAME="Submit1"
+								VALUE="Generate Puzzle"></P> 
+							 <P><INPUT TYPE="RESET" NAME="Reset1"
+								VALUE="Defaults"></P> </FORM> 
+						  <P><A HREF="/crosswords/">Crossword Puzzle Archive</A></P>
+						  <P><A
+							 HREF="http://www.emogic.com/cgi/crosswordsforfriends/" target="_blank">Multiplayer Crossword
+							 Puzzles</A></P>
+						  <P><A
+							 HREF="http://apps.facebook.com/crosswordsforfriends/"  target="_blank">Facebook Multiplayer
+							 Crossword Puzzles</A></P> 
+						  <P>Willing to trade Crossword Databases?<BR> <SCRIPT>document.write("<a href=\u0027ma\u0069lto:vpelss@emo\u0067i\u0063\u002Ecom\u003F\u0073ubje\u0063\u0074=\u0043\u0072o\u0073\u0073\u0077\u006Fr\u0064\u0020\u0044at\u0061\u0062a\u0073\u0065");document.write("\u0020\u0054ra\u0064\u0065\u0027\u003E\u0043o\u006E\u0074\u0061ct\u0020\u004De<\u002F\u0061>");</SCRIPT></P> 
+						  <NOSCRIPT> 
+							 <P>Javascript is not enabled. Email me at:
+								vpelss@emogic.com</P></NOSCRIPT></CENTER> 
+						<P></P> </TD> 
+				  </TR> 
+				</TABLE></TD> 
+		  </TR> 
+		</TABLE> 
+		<TABLE CELLPADDING="0" CELLSPACING="0" BGCOLOR="#FFFFFF"> 
+		  <TR> 
+			 <TD> </TD> 
+		  </TR> 
+		</TABLE></CENTER> </BODY>
+</HTML>

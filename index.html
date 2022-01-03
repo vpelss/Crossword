@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//SoftQuad Software//DTD HoTMetaL PRO 6.0::19990601::extensions to HTML 4.0//EN" "hmpro6.dtd">
+<HTML> 
+  <HEAD>
+	 <META NAME="KEYWORDS"
+	  CONTENT="infinite , instant , unlimited , crossword , cross, word, generator , puzzle , script , crosswords, printable">
+	 <META NAME="DESCRIPTION"
+	  CONTENT="Infinite Crossword Puzzle Generator Script to create Crosswords for prining or saving for use in your web browser">
+	 
+	 <TITLE>Infinite Crossword Puzzle Generator by Emogic.com</TITLE> 
+  </HEAD> 
+  <BODY BACKGROUND="crossword.gif"> 
+	 <CENTER> 
+		<TABLE CELLPADDING="0" CELLSPACING="0" BGCOLOR="#FFFFFF"> 
+		  <TR> 
+			 <TD></TD> 
+		  </TR> 
+		</TABLE> 
+		<TABLE CELLPADDING="0" CELLSPACING="1" BGCOLOR="#000000"> 
+		  <TR> 
+			 <TD> 
+				<TABLE CELLPADDING="5" CELLSPACING="0" BGCOLOR="#FFFFFF"> 
+				  <TR> 
+					 <TD> 
+						<H3>Emogic's Infinite Crossword Generator</H3> 
+						<CENTER> 
+						  <FORM ACTION="/cgi/crossword/crossword.cgi" METHOD="POST"
+						  NAME="MyForm"> 
+							 <P>Size (size x size)
+								<INPUT TYPE="TEXT" NAME="width" VALUE="15" SIZE="2"> (9 - 51)</P> 
+							 <P>Generate puzzle for
+								<INPUT TYPE="TEXT" NAME="timeout" VALUE="5" SIZE="2"> seconds. (1 - 30)</P> 
+							 <TABLE CELLPADDING="0" CELLSPACING="0"> 
+								<TR> 
+								  <TD VALIGN="TOP" COLSPAN="2" ALIGN="CENTER"><U>Clue
+									 Databases</U></TD> 
+								</TR> 
+								<TR> 
+								  <TD VALIGN="TOP"><INPUT TYPE="CHECKBOX"
+									 NAME="cluefiles" CHECKED="CHECKED" VALUE="words/CrosswordExpress.txt">
+									 Standard<BR><INPUT TYPE="CHECKBOX" NAME="cluefiles"
+									 VALUE="words/CrosswordExpressExtra.txt"> Extra<BR><INPUT TYPE="CHECKBOX"
+									 NAME="cluefiles" VALUE="words/SympathyClueMaintainer.txt"> Extra2<BR><INPUT
+									 TYPE="CHECKBOX" NAME="cluefiles" VALUE="words/CSolver.txt"> Extra3<BR><INPUT
+									 TYPE="CHECKBOX" NAME="cluefiles" VALUE="words/American.txt">
+									 USA/Slang/Acro<BR></TD> 
+								  <TD VALIGN="TOP"><INPUT TYPE="CHECKBOX"
+									 NAME="cluefiles" VALUE="words/WordNetNouns.txt"> WordNet Nouns<BR><INPUT
+									 TYPE="CHECKBOX" NAME="cluefiles" VALUE="words/WordNetVerbs.txt"> WordNet
+									 Verbs<BR><INPUT TYPE="CHECKBOX" NAME="cluefiles" VALUE="words/WordNetAdj.txt">
+									 WordNet Adj<BR><INPUT TYPE="CHECKBOX" NAME="cluefiles"
+									 VALUE="words/WordNetAdv.txt"> WordNet Adv<BR><INPUT TYPE="CHECKBOX"
+									 NAME="cluefiles" VALUE="words/WordNetAntonyms.txt"> WordNet Antonyms</TD> 
+								</TR> 
+							 </TABLE> 
+							 <P>Minimum word size:
+								<INPUT TYPE="TEXT" NAME="min" SIZE="3" VALUE="3"> (2-51)</P> 
+							 <P>Maximum word size:
+								<INPUT TYPE="TEXT" NAME="max" SIZE="3" VALUE="51"> (2-51)</P> 
+							 <P><INPUT TYPE="SUBMIT" NAME="Submit1"
+								VALUE="Generate Puzzle"></P> 
+							 <P><INPUT TYPE="RESET" NAME="Reset1"
+								VALUE="Defaults"></P> </FORM> 
+						  <P><A HREF="/crosswords/">Crossword Puzzle Archive</A></P> 
+						  <P><A
+							 HREF="http://www.emogic.com/cgi/crosswordsforfriends/"
+							 TARGET="_blank">Multiplayer Crossword Puzzles</A></P> 
+						  <P><A HREF="http://apps.facebook.com/crosswordsforfriends/"
+							 TARGET="_blank">Facebook Multiplayer Crossword Puzzles</A></P> 
+		
+<!--FB share start-->
+<style>
+.facebook_button {
+    display: inline-block;
+
+    background: #627aac;
+
+    border-top: 1px solid #29447e;
+    border-right: 1px solid #29447e;
+    border-bottom: 1px solid #1a356e;
+    border-left: none;
+
+    height: 20px;
+
+    padding-right: 7px;
+    padding-left: 7px;
+
+    font-weight: bold;
+    font-size: 11px;
+    color: white;
+    text-decoration: none;
+    font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
+    line-height: 20px;
+
+    cursor: pointer;
+
+}
+</style>
+	 <DIV ID="fb-root"></DIV> <SCRIPT>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=34818814539&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+function vp()
+{
+var tt = {
+    method: 'share',
+    href: "https://www.emogic.com/",
+  };
+tt.href = window.location.href;
+
+ FB.ui(
+  tt ,
+  function(response) {
+    if (response && !response.error_code) {
+      alert('Posting completed.');
+    } else {
+      alert('Error while posting.');
+    }
+  }
+        );
+};
+</SCRIPT>
+
+<CENTER><div class="fb-like" data-href="https://apps.facebook.com/emogiccrossword/" data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div>
+<div class="facebook_button"  ONCLICK="window.open('https://apps.facebook.com/emogiccrossword/','_blank');" >Play this on FB</div>
+<div class="facebook_button"  ONCLICK="window.open('https://www.facebook.com/games/emogiccrossword/','_blank');">Add to your FB Apps</div>
+</CENTER>
+<!--FB share end-->							 
+							 
+							 </CENTER> 
+						
+				
+
+						
+						</TD> 
+				  </TR> 
+				</TABLE></TD> 
+		  </TR> 
+		</TABLE> 
+		<TABLE CELLPADDING="0" CELLSPACING="0" BGCOLOR="#FFFFFF"> 
+		  <TR> 
+			 <TD> </TD> 
+		  </TR> 
+		</TABLE></CENTER> </BODY>
+</HTML>

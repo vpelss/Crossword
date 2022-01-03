@@ -1,0 +1,35 @@
+<FORM ACTION="/cgi/crossword/crossword.cgi" METHOD="POST"
+						  NAME="MyForm"> 
+							 <P>Size (size x size)
+								<INPUT TYPE="TEXT" NAME="width" VALUE="19" SIZE="2"> (9 - 51)</P> 
+							 <P>Generate puzzle for
+								<INPUT TYPE="TEXT" NAME="timeout" VALUE="5" SIZE="2"> seconds. (1 - 30)</P> 
+							 <TABLE CELLPADDING="0" CELLSPACING="0"> 
+								<TR> 
+								  <TD VALIGN="TOP" COLSPAN="2" ALIGN="CENTER"><U>Clue
+									 Databases</U></TD> 
+								</TR> 
+								<TR> 
+								  <TD VALIGN="TOP"><INPUT TYPE="CHECKBOX"
+									 NAME="cluefiles" CHECKED="CHECKED" VALUE="words/CrosswordExpress.txt">
+									 Standard<BR><INPUT TYPE="CHECKBOX" NAME="cluefiles"
+									 VALUE="words/CrosswordExpressExtra.txt"> Extra<BR><INPUT TYPE="CHECKBOX"
+									 NAME="cluefiles" VALUE="words/SympathyClueMaintainer.txt"> Extra2<BR><INPUT
+									 TYPE="CHECKBOX" NAME="cluefiles" VALUE="words/CSolver.txt"> Extra3<BR></TD> 
+								  <TD VALIGN="TOP"><INPUT TYPE="CHECKBOX"
+									 NAME="cluefiles" VALUE="words/WordNetNouns.txt"> WordNet Nouns<BR><INPUT
+									 TYPE="CHECKBOX" NAME="cluefiles" VALUE="words/WordNetVerbs.txt"> WordNet
+									 Verbs<BR><INPUT TYPE="CHECKBOX" NAME="cluefiles" VALUE="words/WordNetAdj.txt">
+									 WordNet Adj<BR><INPUT TYPE="CHECKBOX" NAME="cluefiles"
+									 VALUE="words/WordNetAdv.txt"> WordNet Adv<BR><INPUT TYPE="CHECKBOX"
+									 NAME="cluefiles" VALUE="words/WordNetAntonyms.txt"> WordNet Antonyms</TD> 
+								</TR> 
+							 </TABLE>
+							 <P>Minimum word size:
+								<INPUT TYPE="TEXT" NAME="min" SIZE="3" VALUE="3"> (2-51)</P>
+							 <P>Maximum word size:
+								<INPUT TYPE="TEXT" NAME="max" SIZE="3" VALUE="51"> (2-51)</P> 
+							 <P><INPUT TYPE="SUBMIT" NAME="Submit1"
+								VALUE="Generate Puzzle"></P>
+							 <P><INPUT TYPE="RESET" NAME="Reset1"
+								VALUE="Defaults"></P> </FORM> 

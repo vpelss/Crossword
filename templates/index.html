@@ -1,0 +1,371 @@
+<!DOCTYPE HTML PUBLIC "-//SoftQuad Software//DTD HoTMetaL PRO 6.0::19990601::extensions to HTML 4.0//EN" "hmpro6.dtd">
+<HTML>
+  <HEAD>
+         <META NAME="KEYWORDS"
+          CONTENT="infinite , instant , unlimited , crossword , cross, word, generator , puzzle , script , crosswords, printable , free">
+         <META NAME="DESCRIPTION"
+          CONTENT="Infinite Free Crossword Puzzle Generator Script to create Crosswords for prining or saving for use in your web browser">
+         <LINK REL="stylesheet" HREF="/jqueryui/jquery-ui.css"> <SCRIPT SRC="//code.jquery.com/jquery-1.10.2.js"></SCRIPT> <SCRIPT SRC="/jqueryui/jquery-ui.js"></SCRIPT>
+         <TITLE>Infinite Crossword Puzzle Generator by Emogic.com Free %title%</TITLE> <STYLE TYPE="text/css">
+.tableclass {
+  background-color: white;
+}
+
+.tdwhiteclass {
+  background-color: white;
+  text-align: center;
+  vertical-align : MIDDLE;
+  height: 25pt;
+  width: 20pt;
+  border-top: 1pt black solid;
+  border-right: 1pt Black solid;
+  border-bottom: 1pt Black solid;
+  border-left: 1pt Black solid;
+}
+
+.tdinnerclass {
+  background-color: white;
+  height: 25pt;
+  width: 20pt;
+  border-top: 1pt black solid;
+  border-right: 1pt Black solid;
+  border-bottom: 1pt Black solid;
+  border-left: 1pt Black solid;
+}
+
+.tdblackclass {
+  height: 25pt;
+  width: 20pt;
+  background-color: black;
+}
+
+.tdnumberclass {
+  background-color: white;
+  font-size: 10pt;
+  margin-top : 1pt;
+  margin-left : 1pt;
+}
+
+.tdselectedclass {
+  height: 25pt;
+  width: 20pt;
+  text-align: center;
+  vertical-align : MIDDLE;
+  background-color: red;
+  border-top: 1pt black solid;
+  border-right: 1pt Black solid;
+  border-bottom: 1pt Black solid;
+  border-left: 1pt Black solid;
+}
+
+.tdwordselectedclass {
+  height: 25pt;
+  width: 20pt;
+  text-align: center;
+  vertical-align : MIDDLE;
+  background-color: #99FFFF;
+  border-top: 1pt black solid;
+  border-right: 1pt Black solid;
+  border-bottom: 1pt Black solid;
+  border-left: 1pt Black solid;
+}
+
+.clues:hover {text-decoration:none; background-color:#80FFFF;}
+.cluesSelected {text-decoration:none; background-color:#c0c0c0;}
+.cluesCleared {text-decoration:none;}
+
+</STYLE>
+  </HEAD>
+  <BODY
+        ONKEYUP="document.getElementById(CurrentFocus).innerHTML=String.fromCharCode(event.keyCode);HighlightNextBox();">
+         <SCRIPT TYPE="text/javascript">
+ //ONKEYUP="CurrentFocus.innerHTML=String.fromCharCode(event.keyCode); insertletter(event.keyCode , nextfocus)
+
+var browserType;
+
+if (document.layers) {browserType = "nn4"}
+if (document.all) {browserType = "ie"}
+if (window.navigator.userAgent.toLowerCase().match("gecko")) {browserType= "gecko"}
+
+function hide2(szDivID)
+{
+if (browserType == "gecko" )
+     document.poppedLayer = eval('document.getElementById(szDivID)');
+else if (browserType == "ie")
+     document.poppedLayer = eval('document.getElementById(szDivID)');
+else
+     document.poppedLayer =
+        eval('document.layers[szDivID]');
+document.poppedLayer.style.display = "none";
+}
+
+function show2(szDivID)
+{
+if (browserType == "gecko" )
+     document.poppedLayer = eval('document.getElementById(szDivID)');
+else if (browserType == "ie")
+     document.poppedLayer = eval('document.getElementById(szDivID)');
+else
+     document.poppedLayer = eval('document.layers[szDivID]');
+document.poppedLayer.style.display = "inline";
+}
+
+function doSaveAs()
+{
+if (browserType != "ie") {alert("Not IE. You must right click and select 'Save page as...'")}
+if (document.execCommand) {document.execCommand("SaveAs");}
+};
+
+var LetterPosArray = new Array(0,0);
+var OldLetterPosArray = new Array(0,0);
+var horizvert = 0; //0 is  horiz 1 is vert
+var OldClue = "";
+var CurrentFocus = ""; //ID Name  where letters will be inserted
+var CurrentClass = 'tdwhiteclass'; //for remembering the class to return the square too
+var NthPosition = 0; //so we can find the next square to type a letter into
+var CurrentPos = new Array(0,0); //CURRENTLY HIGLIGHTED BOX COORDINATES
+
+
+function ToggleHV()
+{
+if (horizvert == 0) {horizvert=1}
+else {horizvert=0}
+}
+
+function ClearBox(cell)
+{
+if (CurrentFocus != "") {document.getElementById(CurrentFocus).className = CurrentClass;} //restore the class name to white
+//CurrentClass = document.getElementById(cell).className; //store the class name of the square in the process of being focused
+}
+
+function HighlightBox(cell)
+{
+CurrentClass = document.getElementById(cell).className; //store the class name of the square in the process of being focused
+document.getElementById(cell).className = 'tdselectedclass'; //select/focus the square
+CurrentFocus = document.getElementById(cell).getAttribute('ID');
+}
+
+function HighlightNextBox()
+{
+var xpos = CurrentPos[0];
+var ypos = CurrentPos[1];
+var cell = "cell_" + xpos + "_" + ypos;
+ClearBox(cell);
+
+NthPosition = NthPosition + 2;
+if (NthPosition >= LetterPosArray.length) {NthPosition = 0}
+
+xpos = LetterPosArray[NthPosition];
+ypos = LetterPosArray[NthPosition+1];
+var cell = "cell_" + xpos + "_" + ypos;
+HighlightBox(cell);
+}
+
+function HighlightClue(theword)
+{
+if (OldClue != "")
+        {document.getElementById(OldClue).className = 'cluesCleared'} //clear old clue
+document.getElementById(theword).className = 'cluesSelected'; //select/focus the clue
+OldClue = theword;
+}
+
+function HighlightWord(LetterPosArrayArg)
+{
+//white out old word
+for (i = 0; i < OldLetterPosArray.length; i = i + 2)
+        {
+        var t = "cell_" + OldLetterPosArray[i] + "_" + OldLetterPosArray[i+1];
+        document.getElementById(t).className = 'tdwhiteclass';
+        }
+//set current word to old word so we can white it out later
+OldLetterPosArray = LetterPosArrayArg.slice();
+//highlight the current word
+for (i = 0; i < LetterPosArrayArg.length; i = i + 2)
+        {
+        var t = "cell_" + LetterPosArrayArg[i] + "_" + LetterPosArrayArg[i+1];
+        document.getElementById(t).className = 'tdwordselectedclass';
+        }
+}
+
+function FindNthPosition(xpos,ypos,LetterPosArrayArg)
+{
+for (i = 0; i < LetterPosArrayArg.length; i = i + 2)
+        {
+        if ( (xpos == LetterPosArrayArg[i]) && (ypos == LetterPosArrayArg[i+1]) ) {return(i);};
+        }
+};
+
+function choose(word , xpos , ypos , LetterPosArrayArg)
+{
+//CurrentWordLength = word.length;
+CurrentPos = [xpos,ypos];
+var cell = "cell_" + xpos + "_" + ypos; //generate text class ID for the chosen square
+ClearBox(cell);//clear old box
+LetterPosArray = LetterPosArrayArg.slice();
+HighlightClue(word);
+HighlightWord(LetterPosArray);
+HighlightBox(cell);
+
+NthPosition = FindNthPosition(xpos,ypos,LetterPosArray);
+};
+
+</SCRIPT>
+         <H3 ALIGN="CENTER">Emogic's Infinite Crossword Puzzle Generator - Printable
+                / Playable / Savable / Free</H3>
+         <TABLE ALIGN="CENTER">
+                <TR>
+                  <TD>
+                         <FORM><INPUT TYPE="BUTTON" NAME="Button1" VALUE="Instructions"
+                                ONCLICK="howtoplay();"></FORM></TD>
+                  <TD>
+                         <FORM><INPUT TYPE="BUTTON" NAME="Button2"
+                                VALUE="Create new crossword"
+                                ONCLICK="if (confirm('Are you sure? This will delete the current puzzle.')) {window.open('/cgi/crossword/','_self');}
+else{};"></FORM></TD>
+
+                  <TD>
+                         <FORM><INPUT TYPE="BUTTON" NAME="Button3"
+                                VALUE="Other Crossword Puzzles"
+                                ONCLICK="if (confirm('Are you sure? This will delete the current puzzle.')) {window.open('%archiveurl%','_self');}
+else{};"></FORM></TD>
+
+                </TR>
+                <TR>
+                  <TD COLSPAN="3">
+                         <P>Your puzzle has been archived at: <A
+                                HREF="%archiveurl%%filename%">%archiveurl%%filename%</A>.</P></TD>
+                </TR>
+         </TABLE>
+
+
+<!--start How To Play dialog jqueryui-->
+         <SCRIPT>
+//start dialogs and turn off
+$(function() {
+    $( ".dialogs" ).dialog({
+        autoOpen: false,
+      modal: true,
+      buttons: {
+        Ok: function() {
+          $( this ).dialog( "close" );
+        }
+      }
+    });
+  });
+
+function howtoplay ()
+ {
+ $( '#dialog-message' ).dialog( "open" );
+$( "#dialog-message" ).dialog( "option", "width", 800 );
+ };
+
+</SCRIPT>
+         <DIV ID="dialog-message" TITLE="Instructions" CLASS="dialogs"
+         STYLE="width:800pt;">
+                <P>Instructions:</P>
+                <UL>
+                  <LI>Edit this crossword by clicking on a square and entering a
+                         letter.</LI>
+                  <LI>Save it to your desktop to complete it at a later time. (<B>.html
+                         extension</B>)</LI>
+                  <LI>Or Print it. You may want to Show Answers at the bottom of this
+                         page first. If your printer is not printing the black squares, your print
+                         drivers may be in a printer 'econo' or 'toner save' mode. Firefox has the
+                         ability to print color backgrounds. Microsoft's IE does not allow it. Adjust
+                         your printer settings accordingly.</LI>
+                </UL> </DIV>
+<!--end How To Play dialog jqueryui-->
+         <P ALIGN="CENTER">
+
+         <%puzzle%></P>
+         <TABLE CELLPADDING="3" CELLSPACING="0" ALIGN="CENTER">
+                <TR VALIGN="TOP">
+                  <TD VALIGN="TOP">Across:<HR> <%across%></TD>
+                  <TD VALIGN="TOP"> Down:<HR> <%down%></TD>
+                </TR>
+         </TABLE>
+         <P></P>
+         <TABLE ALIGN="CENTER">
+                <TR>
+                  <TD>
+                         <FORM><INPUT TYPE="BUTTON" NAME="Button4" VALUE="Show Answers"
+                                ONCLICK="show2('Answers')"></FORM></TD>
+                  <TD>
+                         <FORM><INPUT TYPE="BUTTON" NAME="Button5" VALUE="Hide Answers"
+                                ONCLICK="hide2('Answers')"></FORM></TD>
+                </TR>
+         </TABLE>
+         <DIV ID="Answers">
+                <P ALIGN="CENTER"><%answers%>
+                </P></DIV> <SCRIPT>
+hide2('Answers');
+</SCRIPT>
+
+<!--FB share start-->
+<style>
+.facebook_button {
+    display: inline-block;
+
+    background: #627aac;
+
+    border-top: 1px solid #29447e;
+    border-right: 1px solid #29447e;
+    border-bottom: 1px solid #1a356e;
+    border-left: none;
+
+    height: 20px;
+
+    padding-right: 7px;
+    padding-left: 7px;
+
+    font-weight: bold;
+    font-size: 11px;
+    color: white;
+    text-decoration: none;
+    font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
+    line-height: 20px;
+
+    cursor: pointer;
+
+}
+</style>
+         <DIV ID="fb-root"></DIV> <SCRIPT>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=34818814539&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+function vp()
+{
+var tt = {
+    method: 'share',
+    href: "https://www.emogic.com/",
+  };
+tt.href = window.location.href;
+
+ FB.ui(
+  tt ,
+  function(response) {
+    if (response && !response.error_code) {
+      alert('Posting completed.');
+    } else {
+      alert('Error while posting.');
+    }
+  }
+        );
+};
+</SCRIPT>
+
+<CENTER><div class="fb-like" data-href="https://apps.facebook.com/emogiccrossword/" data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div>
+<div class="facebook_button"  ONCLICK="window.open('https://apps.facebook.com/emogiccrossword/','_blank');" >Play this on FB</div>
+<div class="facebook_button"  ONCLICK="vp();">Share this puzzle on FB</div>
+<div class="facebook_button"  ONCLICK="window.open('https://www.facebook.com/games/emogiccrossword/','_blank');">Add to your FB Apps</div>
+</CENTER>
+<!--FB share end-->
+
+
+         <P ALIGN="CENTER">Crossword Script by: <A
+                HREF="http://www.emogic.com/" target="_blank">Emogic</A></P> </BODY>
+</HTML>
