@@ -2,6 +2,7 @@
 #use strict;
 
 eval {
+      use lib '.';
       require "vars.cgi";  #load up common variables and routines. // &cgierr
       };
 warn $@ if $@;
